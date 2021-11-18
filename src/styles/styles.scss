@@ -1,0 +1,32 @@
+@import "./base/settings";
+@import "./base/base";
+
+.navlink {
+  a {
+    margin: 5px;
+    text-decoration: none;
+  }
+  .active-now {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
+.createExpensify {
+  .input-group {
+    display: block;
+    margin-bottom: 10px;
+    label {
+      width: 100px;
+      display: block;
+    }
+    input {
+      height: 25px;
+      width: 250px;
+    }
+  }
+  button {
+    width: 100px;
+    height: 30px;
+  }
+}
