@@ -1,10 +1,8 @@
 const path = require('path');
-
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: ['./src/app.js'],
-    //mode: "development",
-    // entry: './src/playground/hoc.js',
 
     output: {
         path: path.join(__dirname, 'public'),
@@ -18,13 +16,28 @@ module.exports = {
         },
             {
                 test: /\.s?css$/, // Thats mean s optional // Scss & css will load
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
+                use: [MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap:true
+                        }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap:true
+                        }
+                    }
 
                 ]
             }]
     },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "style.css",
+            chunkFilename: "[id].css",
+        }),
+    ],
 };
 
